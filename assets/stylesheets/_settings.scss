@@ -1,0 +1,22 @@
+// colors
+
+$aqua-spring: #ECF8F8;
+$mercury: #EEE4E1;
+$bone: #EFD8C9;
+$rose-fog: #E6BEAE;
+$pale-taupe: #B2967D;
+$white-smoke: #adadadc4;
+$light-gray: #c2c0c0c4;
+
+// fonts
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('assets/fonts/DMSans-Regular.ttf') format('truetype'),
+}
+
+// settings
+
+$background: $mercury;
+$shadow: $white-smoke;
+$main-font: 'DmSans';
