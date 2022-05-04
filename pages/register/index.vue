@@ -17,7 +17,8 @@ export default Vue.extend({
     return {
       title: 'Register'
     }
-  }
+  },
+  layout: 'guest'
 })
 </script>
 

@@ -1,9 +1,12 @@
 <template>
   <input
     :id="id"
+    v-model="inputValue"
     :type="type"
     :placeholder="placeholder"
     :disabled="disabled"
+    :required="required"
+    @input="$emit('input', inputValue)"
   />
 </template>
 
@@ -27,6 +30,15 @@ export default Vue.extend({
     disabled: {
       type: Boolean,
       default: false
+    },
+    required: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data () {
+    return {
+      inputValue: ''
     }
   }
 })

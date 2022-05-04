@@ -3,14 +3,18 @@
     <form @submit.prevent="submit">
       <mu-input
         id="username"
+        v-model="username"
         class="field"
         placeholder="Username"
+        required
       />
       <mu-input
         id="password"
+        v-model="username"
         class="field"
         type="password"
         placeholder="Password"
+        required
       />
       <mu-button type="submit"> Register </mu-button>
     </form>
@@ -19,6 +23,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapActions } from 'vuex'
 import MuCard from '~/components/atoms/mu-card/index.vue'
 import MuInput from '~/components/atoms/mu-input/index.vue'
 import MuButton from '~/components/atoms/mu-button/index.vue'
@@ -30,8 +35,29 @@ export default Vue.extend({
     MuInput,
     MuButton
   },
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
   methods: {
-    submit () {}
+    ...mapActions({
+      register: 'auth/register'
+    }),
+    async submit () {
+      try {
+        await this.register({
+          username: this.username,
+          password: this.password
+        })
+        this.$router.push('/notes')
+      } catch (e: any) {
+        this.$notification.isShow = true
+        this.$notification.type = 'destructive'
+        this.$notification.message = e.message
+      }
+    }
   }
 })
 </script>

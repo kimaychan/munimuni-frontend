@@ -4,22 +4,22 @@ import axios from 'axios'
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $api: NuxtAxiosInstance
+    $endpoint: NuxtAxiosInstance
   }
 }
 
 declare module 'vuex/types/index' {
   interface Store<S> {
-    $api: NuxtAxiosInstance
+    $endpoint: NuxtAxiosInstance
   }
 }
 
 declare module '@nuxt/types' {
   interface NuxtAppOptions {
-     $api: NuxtAxiosInstance
+    $endpoint: NuxtAxiosInstance
   }
   interface Context {
-     $api: NuxtAxiosInstance
+    $endpoint: NuxtAxiosInstance
   }
 }
 
@@ -30,12 +30,11 @@ const muAxios = axios.create({
     common: {
       Accept: 'application/json, */*'
     }
-  },
-  withCredentials: true
+  }
 })
 
-const api: Plugin = (_, inject) => {
-  inject('api', muAxios)
+const endpoint: Plugin = (_, inject) => {
+  inject('endpoint', muAxios)
 }
 
-export default api
+export default endpoint
